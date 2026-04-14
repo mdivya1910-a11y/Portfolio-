@@ -10,12 +10,11 @@
 <style>
 :root {
   --bg: #0a0a0f;
-  --surface: #13131a;
   --border: #2a2a38;
   --white: rgba(255,255,255,0.88);
   --muted: rgba(255,255,255,0.4);
 
-  /* 8px spacing system */
+  /* 8px system */
   --space-1: 8px;
   --space-2: 16px;
   --space-3: 24px;
@@ -25,8 +24,19 @@
   --space-8: 64px;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
 
 body {
   background: var(--bg);
@@ -36,30 +46,17 @@ body {
   overflow-x: hidden;
 }
 
-/* Background */
+/* BACKGROUND */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image:
-    radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 50% 8%, rgba(255,255,255,0.45) 0%, transparent 100%),
-    radial-gradient(1px 1px at 68% 42%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 82% 70%, rgba(255,255,255,0.4) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  top: -200px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(120,80,200,0.12) 0%, transparent 70%);
+    radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 50% 8%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 68% 42%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 82% 70%, rgba(255,255,255,0.4), transparent);
   pointer-events: none;
   z-index: 0;
 }
@@ -70,7 +67,7 @@ body::after {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: var(--space-8) 8vw var(--space-5);
+  padding: var(--space-6) 8vw var(--space-3);
   position: relative;
   z-index: 2;
 }
@@ -99,18 +96,28 @@ body::after {
   font-size: 14px;
   line-height: 1.9;
   color: rgba(255,255,255,0.5);
-  max-width: 400px;
+  max-width: 420px;
 }
 
 /* PROJECTS */
 .projects {
-  padding: var(--space-4) 8vw var(--space-4);
+  padding: var(--space-3) 8vw var(--space-4);
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--space-1);
 }
 
 .project-card {
-  margin-top: var(--space-2);
   padding: var(--space-2);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 10px;
@@ -132,7 +139,7 @@ body::after {
 
 /* ABOUT */
 .about {
-  padding: var(--space-8) 8vw var(--space-8);
+  padding: var(--space-6) 8vw var(--space-6);
   border-top: 1px solid var(--border);
   position: relative;
   z-index: 2;
@@ -142,7 +149,7 @@ body::after {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-6);
-  margin-top: var(--space-5);
+  margin-top: var(--space-4);
 }
 
 .about p {
@@ -172,7 +179,7 @@ body::after {
 
 /* FOOTER */
 footer {
-  padding: var(--space-5) 8vw;
+  padding: var(--space-4) 8vw;
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
@@ -189,13 +196,9 @@ footer {
 .footer-right {
   font-size: 10px;
   color: var(--muted);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  text-align: right;
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .about-grid {
     grid-template-columns: 1fr;
@@ -204,10 +207,6 @@ footer {
   footer {
     flex-direction: column;
     gap: var(--space-2);
-    text-align: center;
-  }
-
-  .footer-right {
     text-align: center;
   }
 }
@@ -227,9 +226,7 @@ footer {
 
 <!-- PROJECTS -->
 <section class="projects">
-  <p style="font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:var(--space-1);">
-    My Creation
-  </p>
+  <p class="section-label">My Creation</p>
 
   <a class="project-card" href="https://mdivya1910-a11y.github.io/D-s-wings/">
     <div class="project-title">🕊️ White Pigeon</div>
@@ -278,8 +275,8 @@ footer {
   <div class="footer-name">M. Divya🫰</div>
 
   <div class="footer-right">
-    <span>Built with HTML · CSS · SVG</span>
-    <span>Deployed in GitHub Pages</span>
+    Built with HTML · CSS · SVG<br>
+    Deployed in GitHub Pages
   </div>
 </footer>
 
